@@ -8,7 +8,7 @@ class H5Event {
 
     }
 
-    public addEvent(type, handler) {
+    public on(type, handler) {
         //判断事件处理数组是否有该类型事件
         if (this.eventTarget.handlers[type] == undefined) {
             this.eventTarget.handlers[type] = [];
@@ -17,7 +17,7 @@ class H5Event {
         this.eventTarget.handlers[type].push(handler);
     }
 
-    public fireEvent(event) {
+    public trigger(event) {
         //判断是否存在该事件类型
         if (this.eventTarget.handlers[event.type] instanceof Array) {
             var _handler = this.eventTarget.handlers[event.type];
@@ -29,7 +29,7 @@ class H5Event {
         }
     }
 
-    public removeEvent(type, handler) {
+    public off(type, handler) {
         if (this.eventTarget.handlers[type] instanceof Array) {
             var _handler = this.eventTarget.handlers[type];
             //在同一个事件类型下的可能存在多种处理事件，找出本次需要处理的事件

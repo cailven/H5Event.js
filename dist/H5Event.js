@@ -4,13 +4,13 @@ var H5Event = (function () {
             handlers: {},
         };
     }
-    H5Event.prototype.addEvent = function (type, handler) {
+    H5Event.prototype.on = function (type, handler) {
         if (this.eventTarget.handlers[type] == undefined) {
             this.eventTarget.handlers[type] = [];
         }
         this.eventTarget.handlers[type].push(handler);
     };
-    H5Event.prototype.fireEvent = function (event) {
+    H5Event.prototype.trigger = function (event) {
         if (this.eventTarget.handlers[event.type] instanceof Array) {
             var _handler = this.eventTarget.handlers[event.type];
             for (var i = 0; i < _handler.length; i++) {
@@ -18,7 +18,7 @@ var H5Event = (function () {
             }
         }
     };
-    H5Event.prototype.removeEvent = function (type, handler) {
+    H5Event.prototype.off = function (type, handler) {
         if (this.eventTarget.handlers[type] instanceof Array) {
             var _handler = this.eventTarget.handlers[type];
             for (var i = 0; i < _handler.length; i++) {

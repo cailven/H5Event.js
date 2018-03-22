@@ -11,13 +11,16 @@
 <script>
 
     var h5Event = new H5Event();
-    h5Event.addEvent("test", function () {
+    h5Event.on("test", function (e) {
+        console.log(e);
+        console.log(e.data);
         alert("this is a test")
     })
 
     setTimeout(function () {
-        h5Event.fireEvent({
-            type: "test"
+        h5Event.trigger({
+            type: "test",
+            data: ["test1", "test2", "test3"]
         });
     }, 1000)
 
